@@ -5,27 +5,27 @@
       "required": true,
       "type": "enum",
       "values": [8],
-      "doc": "Style specification version number. Must be 8.",
+      "doc": "样式规范版本号。 必须为 8。",
       "example": 8
     },
     "name": {
       "type": "string",
-      "doc": "A human-readable name for the style.",
+      "doc": "样式名称.",
       "example": "Bright"
     },
     "metadata": {
       "type": "*",
-      "doc": "Arbitrary properties useful to track with the stylesheet, but do not influence rendering. Properties should be prefixed to avoid collisions, like 'mapbox:'."
+      "doc": "关于样式表的任意属性信息，但不涉及到渲染信息。这些属性应该添加前缀以避免冲突，例如 'mapbox:'。"
     },
     "center": {
       "type": "array",
       "value": "number",
-      "doc": "Default map center in longitude and latitude.  The style center will be used only if the map has not been positioned by other means (e.g. map options or user interaction).",
+      "doc": "地图默认的中心经度和纬度。这个中心点只有在地图没有被其他方法定位时（例如地图设置或用户交互）才生效。",
       "example": [-73.9749, 40.7736]
     },
     "zoom": {
       "type": "number",
-      "doc": "Default zoom level.  The style zoom will be used only if the map has not been positioned by other means (e.g. map options or user interaction).",
+      "doc": "默认缩放级别。这个缩放级别只有在地图没有被其他方法定位时（例如地图设置或用户交互）才生效。",
       "example": 12.5
     },
     "bearing": {
@@ -34,6 +34,7 @@
       "period": 360,
       "units": "degrees",
       "doc": "Default bearing, in degrees clockwise from true north.  The style bearing will be used only if the map has not been positioned by other means (e.g. map options or user interaction).",
+      "doc": "默认方位角。这个方位角只有在地图没有被其他方法定位时（例如地图设置或用户交互）才生效。",
       "example": 29
     },
     "pitch": {
