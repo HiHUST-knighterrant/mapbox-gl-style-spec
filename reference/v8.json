@@ -15,7 +15,7 @@
     },
     "metadata": {
       "type": "*",
-      "doc": "关于样式表的任意属性信息，但不涉及到渲染信息。这些属性应该添加前缀以避免冲突，例如 'mapbox:'。"
+      "doc": "关于样式表的任意属性信息，但不对渲染过程产生影响。这些属性应该添加前缀以避免冲突，例如 'mapbox:'。"
     },
     "center": {
       "type": "array",
@@ -158,42 +158,43 @@
       "type": "enum",
       "values": {
         "vector": {
-            "doc": "A vector tile source."
+            "doc": "矢量瓦片数据源。"
         },
         "raster": {
-            "doc": "A raster tile source."
+            "doc": "栅格数据源。"
         }
       },
-      "doc": "The data type of the tile source."
+      "doc": "瓦片数据源的类型。"
     },
     "url": {
       "type": "string",
-      "doc": "A URL to a TileJSON resource. Supported protocols are `http:`, `https:`, and `mapbox://<mapid>`."
+      "doc": "指向 TileJSON 的 URL。支持的协议有 `http:`、`https:`、 以及 `mapbox://<mapid>`。"
     },
     "tiles": {
       "type": "array",
       "value": "string",
       "doc": "An array of one or more tile source URLs, as in the TileJSON spec."
+      "doc": "包含一个或多个瓦片数据源的 URL，见 TileJSON 规范"
     },
     "minzoom": {
       "type": "number",
       "default": 0,
-      "doc": "Minimum zoom level for which tiles are available, as in the TileJSON spec."
+      "doc": "瓦片源的最小缩放级别，见 TileJSON 规范。"
     },
     "maxzoom": {
       "type": "number",
       "default": 22,
-      "doc": "Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom levels."
+      "doc": "瓦片源的最大缩放级别，见 TileJSON 规范。当显示更高缩放级别的地图时，会使用此级别的数据。"
     },
     "tileSize": {
       "type": "number",
       "default": 512,
       "units": "pixels",
-      "doc": "The minimum visual size to display tiles for this layer. Only configurable for raster layers."
+      "doc": "图层中显示瓦片的最小尺寸。仅对栅格图层有效。"
     },
     "*": {
       "type": "*",
-      "doc": "Other keys to configure the data source."
+      "doc": "其他数据源相关设置项。"
     }
   },
   "source_geojson": {
@@ -202,46 +203,46 @@
       "type": "enum",
       "values": {
         "geojson": {
-            "doc": "A GeoJSON data source."
+            "doc": "GeoJSON 数据源。"
         }
       },
-      "doc": "The data type of the GeoJSON source."
+      "doc": "GeoJSON 数据源的数据类型。"
     },
     "data": {
       "type": "*",
-      "doc": "A URL to a GeoJSON file, or inline GeoJSON."
+      "doc": "链接到 GeoJSON 文件的 URL，或者内联的 GeoJSON。"
     },
     "maxzoom": {
       "type": "number",
       "default": 18,
-      "doc": "Maximum zoom level at which to create vector tiles (higher means greater detail at high zoom levels)."
+      "doc": "生成矢量瓦片的最大缩放级别（值越大详细程度越高）。"
     },
     "buffer": {
       "type": "number",
       "default": 128,
       "maximum": 512,
       "minimum": 0,
-      "doc": "Size of the tile buffer on each side. A value of 0 produces no buffer. A value of 512 produces a buffer as wide as the tile itself. Larger values produce fewer rendering artifacts near tile edges and slower performance."
+      "doc": "瓦片边界上的缓冲区大小。0 表示无缓冲区。512 表示缓冲区与瓦片本身一样宽。值越大在瓦片边缘上生成的符号冲突越少，但是意味着性能降低。"
     },
     "tolerance": {
       "type": "number",
       "default": 0.375,
-      "doc": "Douglas-Peucker simplification tolerance (higher means simpler geometries and faster performance)."
+      "doc": "Douglas-Peucker 化简容差（值越大，几何要素化简程度越高，渲染性能也更好）。"
     },
     "cluster": {
       "type": "boolean",
       "default": false,
-      "doc": "If the data is a collection of point features, setting this to true clusters the points by radius into groups."
+      "doc": "如果数据是点数据集，设置 true 将会按照聚类半径进行聚类。"
     },
     "clusterRadius": {
       "type": "number",
       "default": 50,
       "minimum": 0,
-      "doc": "Radius of each cluster if clustering is enabled. A value of 512 indicates a radius equal to the width of a tile."
+      "doc": "聚类半径。512 表示聚类半径等于瓦片宽度。"
     },
     "clusterMaxZoom": {
       "type": "number",
-      "doc": "Max zoom on which to cluster points if clustering is enabled. Defaults to one zoom less than maxzoom (so that last zoom features are not clustered)."
+      "doc": "点进行聚类的最大缩放级别。默认为 maxzoom - 1（为了确保在最大缩放级别下要素不被聚类）。"
     }
   },
   "source_video": {
@@ -250,27 +251,27 @@
       "type": "enum",
       "values": {
         "video": {
-            "doc": "A video data source."
+            "doc": "视频数据源。"
         }
       },
-      "doc": "The data type of the video source."
+      "doc": "视频数据源的数据类型。"
     },
     "urls": {
       "required": true,
       "type": "array",
       "value": "string",
-      "doc": "URLs to video content in order of preferred format."
+      "doc": "指向视频内容的URL，按照格式优先级排列。"
     },
     "coordinates": {
       "required": true,
-      "doc": "Corners of video specified in longitude, latitude pairs.",
+      "doc": "视频的四角的经纬度坐标。",
       "type": "array",
       "length": 4,
       "value": {
         "type": "array",
         "length": 2,
         "value": "number",
-        "doc": "A single longitude, latitude pair."
+        "doc": "单个经纬度坐标对。"
       }
     }
   },
@@ -280,107 +281,107 @@
       "type": "enum",
       "values": {
         "image": {
-            "doc": "An image data source."
+            "doc": "图片数据源。"
         }
       },
-      "doc": "The data type of the image source."
+      "doc": "图片数据源的数据类型。"
     },
     "url": {
       "required": true,
       "type": "string",
-      "doc": "URL that points to an image"
+      "doc": "指向图片的 URL。"
     },
     "coordinates": {
       "required": true,
-      "doc": "Corners of image specified in longitude, latitude pairs.",
+      "doc": "图片的四角的经纬度坐标。",
       "type": "array",
       "length": 4,
       "value": {
         "type": "array",
         "length": 2,
         "value": "number",
-        "doc": "A single longitude, latitude pair."
+        "doc": "单个经纬度坐标对。"
       }
     }
   },
   "layer": {
     "id": {
       "type": "string",
-      "doc": "Unique layer name.",
+      "doc": "全局唯一的图层名称。",
       "required": true
     },
     "type": {
       "type": "enum",
       "values": {
         "fill": {
-            "doc": "A filled polygon with an optional stroked border."
+            "doc": "可填充的多边形，可带描边。"
         },
         "line": {
-            "doc": "A stroked line."
+            "doc": "绘制线。"
         },
         "symbol": {
-            "doc": "An icon or a text label."
+            "doc": "图标或者文本标注。"
         },
         "circle": {
-            "doc": "A filled circle."
+            "doc": "可填充的圆。"
         },
         "raster": {
-            "doc": "Raster map textures such as satellite imagery."
+            "doc": "栅格地图例如卫星影像。"
         },
         "background": {
-            "doc": "The background color or pattern of the map."
+            "doc": "地图的背景色或者填充图案。"
         }
       },
-      "doc": "Rendering type of this layer."
+      "doc": "图层的渲染类型。"
     },
     "metadata": {
       "type": "*",
-      "doc": "Arbitrary properties useful to track with the layer, but do not influence rendering. Properties should be prefixed to avoid collisions, like 'mapbox:'."
+      "doc": "关于图层的任意属性信息，但不对渲染过程产生影响。这些属性应该添加前缀以避免冲突，例如 'mapbox:'。"
     },
     "ref": {
       "type": "string",
-      "doc": "References another layer to copy `type`, `source`, `source-layer`, `minzoom`, `maxzoom`, `filter`, and `layout` properties from. This allows the layers to share processing and be more efficient."
+      "doc": "引用其他图层的 `type`、`source`、`source-layer`、`minzoom`、`maxzoom`、`filter`、以及 `layout` 属性。此属性可让图层共享处理过程，提高效率。"
     },
     "source": {
       "type": "string",
-      "doc": "Name of a source description to be used for this layer."
+      "doc": "图层的数据源。"
     },
     "source-layer": {
       "type": "string",
-      "doc": "Layer to use from a vector tile source. Required if the source supports multiple layers."
+      "doc": "矢量瓦片数据源的图层。当数据源支持多个图层时，此属性是必需的。"
     },
     "minzoom": {
       "type": "number",
       "minimum": 0,
       "maximum": 22,
-      "doc": "The minimum zoom level on which the layer gets parsed and appears on."
+      "doc": "图层进行解析并显示的最小缩放级别。"
     },
     "maxzoom": {
       "type": "number",
       "minimum": 0,
       "maximum": 22,
-      "doc": "The maximum zoom level on which the layer gets parsed and appears on."
+      "doc": "图层进行解析并显示的最大缩放级别。"
     },
     "interactive": {
       "type": "boolean",
-      "doc": "Enable querying of feature data from this layer for interactivity.",
+      "doc": "允许从此图层上查询要素数据，用于交互。",
       "default": false
     },
     "filter": {
       "type": "filter",
-      "doc": "A expression specifying conditions on source features. Only features that match the filter are displayed."
+      "doc": "指明数据源上要素的过滤条件的表达式。只有符合过滤条件的要素才被显示。"
     },
     "layout": {
       "type": "layout",
-      "doc": "Layout properties for the layer."
+      "doc": "图层的布局属性。"
     },
     "paint": {
       "type": "paint",
-      "doc": "Default paint properties for this layer."
+      "doc": "图层的默认绘制属性。"
     },
     "paint.*": {
       "type": "paint",
-      "doc": "Class-specific paint properties for this layer. The class name is the part after the first dot."
+      "doc": "特定类别的绘制属性。第一个点后面的部分即为类别名。"
     }
   },
   "layout": [
@@ -398,14 +399,14 @@
       "zoom-function": true,
       "values": {
         "visible": {
-            "doc": "The layer is shown."
+            "doc": "显示此图层。"
         },
         "none": {
-            "doc": "The layer is not shown."
+            "doc": "不显示此图层。"
         }
       },
       "default": "visible",
-      "doc": "Whether this layer is displayed.",
+      "doc": "是否显示此图层。",
       "sdk-support": {
         "basic functionality": {
           "js": "0.10.0",
@@ -422,14 +423,14 @@
       "zoom-function": true,
       "values": {
         "visible": {
-            "doc": "The layer is shown."
+            "doc": "显示此图层。"
         },
         "none": {
-            "doc": "The layer is not shown."
+            "doc": "不显示此图层。"
         }
       },
       "default": "visible",
-      "doc": "Whether this layer is displayed.",
+      "doc": "是否显示此图层。",
       "sdk-support": {
         "basic functionality": {
           "js": "0.10.0",
@@ -446,14 +447,14 @@
       "zoom-function": true,
       "values": {
         "visible": {
-            "doc": "The layer is shown."
+            "doc": "显示此图层。"
         },
         "none": {
-            "doc": "The layer is not shown."
+            "doc": "不显示此图层。"
         }
       },
       "default": "visible",
-      "doc": "Whether this layer is displayed.",
+      "doc": "是否显示此图层。",
       "sdk-support": {
         "basic functionality": {
           "js": "0.10.0",
@@ -471,17 +472,17 @@
       "property-function": true,
       "values": {
         "butt": {
-            "doc": "A cap with a squared-off end which is drawn to the exact endpoint of the line."
+          "doc": "方形末端，仅绘制到直线端点。"
         },
         "round": {
-            "doc": "A cap with a rounded end which is drawn beyond the endpoint of the line at a radius of one-half of the line's width and centered on the endpoint of the line."
+          "doc": "圆形末端，以线宽的 1/2 为半径，以线端点为圆心，超出线端点绘制。"
         },
         "square": {
-            "doc": "A cap with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line's width."
+          "doc": "方形末端，以线宽的 1/2 长度超出线端点绘制。"
         }
       },
       "default": "butt",
-      "doc": "The display of line endings.",
+      "doc": "线末端的显示样式。",
       "sdk-support": {
         "basic functionality": {
           "js": "0.10.0",
@@ -497,17 +498,17 @@
       "property-function": true,
       "values": {
         "bevel": {
-            "doc": "A join with a squared-off end which is drawn beyond the endpoint of the line at a distance of one-half of the line's width."
+          "doc": "方形交点，以线宽的 1/2 长度超出交点绘制。"
         },
         "round": {
-            "doc": "A join with a rounded end which is drawn beyond the endpoint of the line at a radius of one-half of the line's width and centered on the endpoint of the line."
+          "doc": "圆形交点，以线宽的 1/2 为半径，以交点为圆心绘制，超出交点绘制。"
         },
         "miter": {
-            "doc": "A join with a sharp, angled corner which is drawn with the outer sides beyond the endpoint of the path until they meet."
+          "doc": "尖角，以两线段外沿相交，超出交点绘制。"
         }
       },
       "default": "miter",
-      "doc": "The display of lines when joining.",
+      "doc": "线交叉时的显示样式。",
       "sdk-support": {
         "basic functionality": {
           "js": "0.10.0",
@@ -562,14 +563,14 @@
       "zoom-function": true,
       "values": {
         "visible": {
-            "doc": "The layer is shown."
+            "doc": "显示此图层。"
         },
         "none": {
-            "doc": "The layer is not shown."
+            "doc": "不显示此图层。"
         }
       },
       "default": "visible",
-      "doc": "Whether this layer is displayed.",
+      "doc": "是否显示此图层。",
       "sdk-support": {
         "basic functionality": {
           "js": "0.10.0",
