@@ -33,15 +33,14 @@
       "default": 0,
       "period": 360,
       "units": "degrees",
-      "doc": "Default bearing, in degrees clockwise from true north.  The style bearing will be used only if the map has not been positioned by other means (e.g. map options or user interaction).",
-      "doc": "默认方位角。这个方位角只有在地图没有被其他方法定位时（例如地图设置或用户交互）才生效。",
+      "doc": "默认方位角，沿顺时针偏离真北方向的夹角。这个方位角只有在地图没有被其他方法定位时（例如地图设置或用户交互）才生效。",
       "example": 29
     },
     "pitch": {
       "type": "number",
       "default": 0,
       "units": "degrees",
-      "doc": "Default pitch, in degrees. Zero is perpendicular to the surface, for a look straight down at the map, while a greater value like 60 looks ahead towards the horizon. The style pitch will be used only if the map has not been positioned by other means (e.g. map options or user interaction).",
+      "doc": "默认倾斜角度。0 代表垂直于地面，即垂直俯视地图，更大的值例如 60 可以眺望到地平线。这个倾斜角度只有在地图没有被其他方法定位时（例如地图设置或用户交互）才生效。",
       "example": 50
     },
     "light": {
@@ -50,14 +49,14 @@
         "default": "viewport",
         "values": {
           "map": {
-            "doc": "The position of the light source is aligned to the rotation of the map."
+            "doc": "光源的位置随地图旋转。"
           },
           "viewport": {
-            "doc": "The position of the light source is aligned to the rotation of the viewport."
+            "doc": "光源的位置随视窗旋转。"
           }
         },
         "transition": false,
-        "doc": "Whether extruded geometries are lit relative to the map or viewport.",
+        "doc": "凸出的几何要素相对于 map 或 viewport 被照亮。",
         "example": "map"
       },
       "position": {
@@ -69,7 +68,7 @@
         "function": "interpolated",
         "zoom-function": true,
         "property-function": false,
-        "doc": "Position of the light source relative to lit (extruded) geometries, in [r radial coordinate, a azimuthal angle, p polar angle] where r indicates the distance from the center of the base of an object to its light, a indicates the position of the light relative to 0° (0° when `light.anchor` is set to `viewport` corresponds to the top of the viewport, or 0° when `light.anchor` is set to `map` corresponds to due north, and degrees proceed clockwise), and p indicates the height of the light (from 0°, directly above, to 180°, directly below).",
+        "doc": "光源相对于（凸出）几何要素的位置，以 [r 径向坐标, a 方位角, p 高度角] 表示。r 代表从对象基底中心到光源的距离；a 代表光源位置相对于 0° 的角度（当 `light.anchor` 设置为 `viewport` 时，0° 表示视窗的正上方；当 `light.anchor` 设置为 `map` 时，0° 表示正北方向。角度按照顺时针方向计算）；p 代表光源的高度角（0° 表示正上方，180° 表示正下方）。",
         "example": [1.5, 90, 80]
       },
       "color": {
@@ -79,7 +78,7 @@
         "zoom-function": true,
         "property-function": false,
         "transition": true,
-        "doc": "Color tint for lighting extruded geometries."
+        "doc": "突出几何要素的色彩抖动值。"
       },
       "intensity": {
         "type": "number",
@@ -90,13 +89,13 @@
         "zoom-function": true,
         "property-function": false,
         "transition": true,
-        "doc": "Intensity of lighting (on a scale from 0 to 1). Higher numbers will present as more extreme contrast."
+        "doc": "光照强度（取值 0 ~ 1）。值越高对比度越大。"
       }
     },
     "sources": {
       "required": true,
       "type": "sources",
-      "doc": "Data source specifications.",
+      "doc": "数据源说明。",
       "example": {
         "mapbox-streets": {
           "type": "vector",
@@ -106,17 +105,17 @@
     },
     "sprite": {
       "type": "string",
-      "doc": "A base URL for retrieving the sprite image and metadata. The extensions `.png`, `.json` and scale factor `@2x.png` will be automatically appended. This property is required if any layer uses the 'sprite-image' layout property.",
+      "doc": "获取雪碧图及其元数据的基础 URL。扩展名后缀 `.png`、`.json`、以及缩放因子 `@2x.png` 会被自动添加。当有图层使用了 `sprite-image` 布局属性时，此属性必须设置。",
       "example": "mapbox://sprites/mapbox/bright-v8"
     },
     "glyphs": {
       "type": "string",
-      "doc": "A URL template for loading signed-distance-field glyph sets in PBF format. The URL must include `{fontstack}` and `{range}` tokens. This property is required if any layer uses the 'text-field' layout property.",
+      "doc": "获取以有向距离场编码的 PBF 字形文件的 URL 模板。URL 必须包含 `{fontstack}` 和 `{range}` 占位符。当有图层使用了 `text-field` 布局属性时，此属性必须设置。",
       "example": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf"
     },
     "transition": {
       "type": "transition",
-      "doc": "A global transition definition to use as a default across properties.",
+      "doc": "全局的过渡动画属性，用来作为各种属性变化时的默认设置。",
       "example": {
         "duration": 300,
         "delay": 0
@@ -127,6 +126,7 @@
       "type": "array",
       "value": "layer",
       "doc": "Layers will be drawn in the order of this array.",
+      "doc": "图层将按照此数组依次绘制。",
       "example": [
         {
           "id": "water",
@@ -143,7 +143,7 @@
   "sources": {
     "*": {
       "type": "source",
-      "doc": "Specification of a data source. For vector and raster sources, either TileJSON or a URL to a TileJSON must be provided. For GeoJSON and video sources, a URL must be provided."
+      "doc": "数据源说明。对于矢量和栅格数据源，必须提供 TileJSON 或者指向 TileJSON 的 URL。对于 GeoJSON 和视频数据源，必须提供 URL。"
     }
   },
   "source": [
