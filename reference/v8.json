@@ -173,7 +173,6 @@
     "tiles": {
       "type": "array",
       "value": "string",
-      "doc": "An array of one or more tile source URLs, as in the TileJSON spec."
       "doc": "包含一个或多个瓦片数据源的 URL，见 TileJSON 规范"
     },
     "minzoom": {
@@ -2068,7 +2067,7 @@
   },
   "paint_symbol": {
     "icon-opacity": {
-      "doc": "The opacity at which the icon will be drawn.",
+      "doc": "绘制图标的不透明度。",
       "type": "number",
       "default": 1,
       "minimum": 0,
@@ -2095,7 +2094,7 @@
       "zoom-function": true,
       "property-function": true,
       "transition": true,
-      "doc": "The color of the icon. This can only be used with sdf icons.",
+      "doc": "图标的颜色。仅对 sdf 格式的图标有效。",
       "requires": [
         "icon-image"
       ],
@@ -2114,7 +2113,7 @@
       "zoom-function": true,
       "property-function": true,
       "transition": true,
-      "doc": "The color of the icon's halo. Icon halos can only be used with SDF icons.",
+      "doc": "图标的光晕颜色。仅对 sdf 格式的图标有效。",
       "requires": [
         "icon-image"
       ],
@@ -2135,7 +2134,7 @@
       "property-function": true,
       "transition": true,
       "units": "pixels",
-      "doc": "Distance of halo to the icon outline.",
+      "doc": "光晕到图标轮廓的距离。",
       "requires": [
         "icon-image"
       ],
@@ -2156,7 +2155,7 @@
       "property-function": true,
       "transition": true,
       "units": "pixels",
-      "doc": "Fade out the halo towards the outside.",
+      "doc": "光晕向外渐变的宽度。",
       "requires": [
         "icon-image"
       ],
@@ -2181,7 +2180,7 @@
       "property-function": true,
       "transition": true,
       "units": "pixels",
-      "doc": "Distance that the icon's anchor is moved from its original placement. Positive values indicate right and down, while negative values indicate left and up.",
+      "doc": "图标锚点偏离原始位置的距离。正数表示向右和下偏移，负数表示向左和上偏移。",
       "requires": [
         "icon-image"
       ],
@@ -2200,13 +2199,13 @@
       "property-function": true,
       "values": {
         "map": {
-            "doc": "Icons are translated relative to the map."
+            "doc": "相对于地图偏移。"
         },
         "viewport": {
-            "doc": "Icons are translated relative to the viewport."
+            "doc": "相对于视窗偏移。"
         }
       },
-      "doc": "Controls the translation reference point.",
+      "doc": "控制偏移的参考点。",
       "default": "map",
       "requires": [
         "icon-image",
@@ -2222,7 +2221,7 @@
     },
     "text-opacity": {
       "type": "number",
-      "doc": "The opacity at which the text will be drawn.",
+      "doc": "绘制文本的不透明度。",
       "default": 1,
       "minimum": 0,
       "maximum": 1,
@@ -2243,7 +2242,7 @@
     },
     "text-color": {
       "type": "color",
-      "doc": "The color with which the text will be drawn.",
+      "doc": "绘制文本的颜色。",
       "default": "#000000",
       "function": "interpolated",
       "zoom-function": true,
@@ -2267,7 +2266,7 @@
       "zoom-function": true,
       "property-function": true,
       "transition": true,
-      "doc": "The color of the text's halo, which helps it stand out from backgrounds.",
+      "doc": "文本光晕的颜色，用于区别于背景。",
       "requires": [
         "text-field"
       ],
@@ -2288,7 +2287,7 @@
       "property-function": true,
       "transition": true,
       "units": "pixels",
-      "doc": "Distance of halo to the font outline. Max text halo width is 1/4 of the font-size.",
+      "doc": "光晕离字体轮廓线的距离。最大值为字体大小的 1/4 ",
       "requires": [
         "text-field"
       ],
@@ -2309,7 +2308,7 @@
       "property-function": true,
       "transition": true,
       "units": "pixels",
-      "doc": "The halo's fadeout distance towards the outside.",
+      "doc": "光晕向外渐变的宽度。",
       "requires": [
         "text-field"
       ],
@@ -2334,7 +2333,8 @@
       "property-function": true,
       "transition": true,
       "units": "pixels",
-      "doc": "Distance that the text's anchor is moved from its original placement. Positive values indicate right and down, while negative values indicate left and up.",
+      "doc": "文本锚点偏离原始位置的距离。正数表示向右和下偏移，负数表示向左和上偏移。",
+      "doc": "。",
       "requires": [
         "text-field"
       ],
@@ -2353,13 +2353,13 @@
       "property-function": true,
       "values": {
         "map": {
-            "doc": "The text is translated relative to the map."
+            "doc": "相对于地图偏移。"
         },
         "viewport": {
-            "doc": "The text is translated relative to the viewport."
+            "doc": "相对于视窗偏移。"
         }
       },
-      "doc": "Controls the translation reference point.",
+      "doc": "控制偏移的参考点。",
       "default": "map",
       "requires": [
         "text-field",
@@ -2377,7 +2377,7 @@
   "paint_raster": {
     "raster-opacity": {
       "type": "number",
-      "doc": "The opacity at which the image will be drawn.",
+      "doc": "绘制图片的不透明度。",
       "default": 1,
       "minimum": 0,
       "maximum": 1,
@@ -2400,7 +2400,7 @@
       "zoom-function": true,
       "transition": true,
       "units": "degrees",
-      "doc": "Rotates hues around the color wheel.",
+      "doc": "在色轮上旋转色相的角度。",
       "sdk-support": {
         "basic functionality": {
           "js": "0.10.0",
@@ -2413,7 +2413,7 @@
       "type": "number",
       "function": "interpolated",
       "zoom-function": true,
-      "doc": "Increase or reduce the brightness of the image. The value is the minimum brightness.",
+      "doc": "增大或减少图片的亮度。此值是最小亮度。",
       "default": 0,
       "minimum": 0,
       "maximum": 1,
@@ -2430,7 +2430,7 @@
       "type": "number",
       "function": "interpolated",
       "zoom-function": true,
-      "doc": "Increase or reduce the brightness of the image. The value is the maximum brightness.",
+      "doc": "增大或减少图片的亮度。此值是最大亮度。",
       "default": 1,
       "minimum": 0,
       "maximum": 1,
@@ -2445,7 +2445,7 @@
     },
     "raster-saturation": {
       "type": "number",
-      "doc": "Increase or reduce the saturation of the image.",
+      "doc": "增加或者减少图片的饱和度。",
       "default": 0,
       "minimum": -1,
       "maximum": 1,
@@ -2462,7 +2462,7 @@
     },
     "raster-contrast": {
       "type": "number",
-      "doc": "Increase or reduce the contrast of the image.",
+      "doc": "增加或者减少图片的对比度。",
       "default": 0,
       "minimum": -1,
       "maximum": 1,
@@ -2485,7 +2485,7 @@
       "zoom-function": true,
       "transition": true,
       "units": "milliseconds",
-      "doc": "Fade duration when a new tile is added.",
+      "doc": "当添加新瓦片时的渐隐时间。",
       "sdk-support": {
         "basic functionality": {
           "js": "0.10.0",
@@ -2499,7 +2499,7 @@
     "background-color": {
       "type": "color",
       "default": "#000000",
-      "doc": "The color with which the background will be drawn.",
+      "doc": "背景色。",
       "function": "interpolated",
       "zoom-function": true,
       "transition": true,
@@ -2521,7 +2521,7 @@
       "function": "piecewise-constant",
       "zoom-function": true,
       "transition": true,
-      "doc": "Name of image in sprite to use for drawing an image background. For seamless patterns, image width and height must be a factor of two (2, 4, 8, ..., 512).",
+      "doc": "在雪碧图中的图标名称，用来绘制背景图案。为了无缝填充，图案的宽和高必须是 2 的整数倍如 (2, 4, 8, ..., 512)。",
       "sdk-support": {
         "basic functionality": {
           "js": "0.10.0",
@@ -2535,7 +2535,7 @@
       "default": 1,
       "minimum": 0,
       "maximum": 1,
-      "doc": "The opacity at which the background will be drawn.",
+      "doc": "背景色的不透明度。",
       "function": "interpolated",
       "zoom-function": true,
       "transition": true,
@@ -2554,14 +2554,14 @@
       "default": 300,
       "minimum": 0,
       "units": "milliseconds",
-      "doc": "Time allotted for transitions to complete."
+      "doc": "过渡动画的持续时间。"
     },
     "delay": {
       "type": "number",
       "default": 0,
       "minimum": 0,
       "units": "milliseconds",
-      "doc": "Length of time before a transition begins."
+      "doc": "过渡动画延迟开始的时间。"
     }
   }
 }
