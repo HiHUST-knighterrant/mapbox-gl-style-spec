@@ -1,60 +1,60 @@
 ---
 footer:
   mapbox:
-    - title: Products
+    - title: 产品
       path: /products
-    - title: Data
+    - title: 数据
       path: /data-platform
-    - title: Pricing
+    - title: 价格
       path: /pricing
-    - title: Blog
+    - title: 博客
       path: /blog
-    - title: Showcase
+    - title: 案例
       path: /showcase
-    - title: Platform
+    - title: 平台
       path: /platform
-    - title: Telemetry
+    - title: 遥测
       path: /telemetry
   aboutus:
-    - title: Our story
+    - title: 公司历史
       path: /about
-    - title: Team
+    - title: 团队
       path: /about/team
-    - title: Jobs
+    - title: 招聘
       path: /jobs
-    - title: Press
+    - title: 媒体报道
       path: /about/press
-    - title: Green
+    - title: 环保
       path: /about/green
-    - title: Open source
+    - title: 开源
       path: /about/open
-    - title: Board and investors
+    - title: 董事会和投资人
       path: /about/board
   support:
-    - title: Help/FAQ
+    - title: 帮助
       path: /help
-    - title: Status
+    - title: 动态
       path: /status
-    - title: Map feedback
+    - title: 地图反馈
       path: /map-feedback
-    - title: Contact us
+    - title: 联系我们
       path: /contact
-    - title: Education
+    - title: 教育
       path: /education
-    - title: Humanitarian
+    - title: 人道主义
       path: /humanitarian
-    - title: Security
+    - title: 安全
       path: /security
   mapdesign:
-    - title: Maps
+    - title: 地图
       path: /maps
     - title: Mapbox Studio
       path: /mapbox-studio
-    - title: Map Gallery
+    - title: 图集
       path: /gallery
-    - title: Vector tiles
+    - title: 矢量瓦片
       path: /vector-tiles
-    - title: Maki icons
+    - title: Maki 图标
       path: /maki-icons
   developers:
     - title: Mapbox API
@@ -68,13 +68,13 @@ footer:
     - title: Mapbox GL for JS
       path: /mapbox-gl-js
   industries:
-    - title: Real estate
+    - title: 不动产
       path: /industries/realestate
-    - title: Transportation
+    - title: 交通
       path: /industries/transportation
-    - title: Agriculture
+    - title: 农业
       path: /industries/agriculture
-    - title: Social
+    - title: 社交
       path: /industries/social
     - title: "GIS: Mapbox Esri Connect"
       path: /esriconnect
@@ -89,7 +89,7 @@ footer:
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <meta name='apple-mobile-web-app-capable' content='yes' />
   {% if page.description %}<meta name='description' content='{{page.description | strip_html}}'/>{% endif %}
-  <title>{% if page.title == 'Mapbox' %}{{page.title}} | Design and publish beautiful maps{% else %}{{page.title}} | Mapbox{% endif %}</title>
+  <title>{% if page.title == 'Mapbox' %}{{page.title}} | 设计和分享精美的地图{% else %}{{page.title}} | Mapbox{% endif %}</title>
 
   <meta class='swiftype' name='title' data-type='string' content='{{page.title | replace:"'","&rsquo;" | replace:"'","&rsquo;" | replace:"| Mapbox",""}}' />
   <meta class='swiftype' name='type' data-type='enum' content='{% if page.section %}{{page.section}}{% elsif page.category %}{{page.category}}{% else %}site{% endif %}' />
@@ -180,7 +180,7 @@ footer:
 
       <div class='subnav-group subnav-products clearfix'>
         <div class='col6 clearfix'>
-          <h3><a href='/products/' class='rcon next'>Our products</a></h3>
+          <h3><a href='/products/' class='rcon next'>我们的产品</a></h3>
           <div class='col5'>
             <a class='block pad1y icon map' href='/maps'>Maps</a>
             <a class='block pad1y icon studio' href='/mapbox-studio'>Mapbox Studio</a>
@@ -196,49 +196,49 @@ footer:
           </div>
         </div>
         <div class='col5 margin1r'>
-          <h3>Our platform</h3>
-          <a class='block pad1y icon mt' href='/enterprise/'>Enterprise ready</a>
-          <a class='block pad1y icon building' href='/platform/'>Scalable infrastructure</a>
-          <a class='block pad1y icon lock' href='/platform/security/'>Security</a>
-          <a class='block pad1y icon data' href='/data-platform/'>Curated Data</a>
+          <h3>我们的平台</h3>
+          <a class='block pad1y icon mt' href='/enterprise/'>企业级应用</a>
+          <a class='block pad1y icon building' href='/platform/'>可伸缩架构</a>
+          <a class='block pad1y icon lock' href='/platform/security/'>安全性</a>
+          <a class='block pad1y icon data' href='/data-platform/'>数据</a>
         </div>
       </div>
 
       <div class='subnav-group subnav-use-cases clearfix'>
         <div class='col7 clearfix'>
-          <h3><a href='/industries/' class='rcon next'>Industries</a></h3>
+          <h3><a href='/industries/' class='rcon next'>行业应用</a></h3>
           <div class='col4'>
-            <a class='block pad0y' href='/industries/social'>Web &amp; Social</a>
-            <a class='block pad0y' href='/industries/logistics'>Logistics</a>
-            <a class='block pad0y' href='/industries/outdoors'>Fitness &amp; Outdoors</a>
-            <a class='block pad0y' href='/industries/naturalresources'>Natural Resources</a>
-            <a class='block pad0y' href='/industries/agriculture'>Agriculture</a>
+            <a class='block pad0y' href='/industries/social'>社交</a>
+            <a class='block pad0y' href='/industries/logistics'>数据分析</a>
+            <a class='block pad0y' href='/industries/outdoors'>户外健身</a>
+            <a class='block pad0y' href='/industries/naturalresources'>自然资源</a>
+            <a class='block pad0y' href='/industries/agriculture'>农业</a>
           </div>
           <div class='col4'>
-            <a class='block pad0y' href='/industries/transportation'>Transportation</a>
-            <a class='block pad0y' href='/industries/realestate'>Real Estate</a>
-            <a class='block pad0y' href='/industries/insurance'>Insurance</a>
-            <a class='block pad0y' href='/industries/security'>Security</a>
-            <a class='block pad0y' href='/industries/finance'>Finance</a>
+            <a class='block pad0y' href='/industries/transportation'>交通</a>
+            <a class='block pad0y' href='/industries/realestate'>不动产</a>
+            <a class='block pad0y' href='/industries/insurance'>保险</a>
+            <a class='block pad0y' href='/industries/security'>安全</a>
+            <a class='block pad0y' href='/industries/finance'>财经</a>
           </div>
           <div class='col4'>
-            <a class='block pad0y' href='/industries/drones'>Drones</a>
-            <a class='block pad0y' href='/industries/government'>Government</a>
-            <a class='block pad0y' href='/industries/health'>Health</a>
-            <a class='block pad0y' href='/industries/media'>Media</a>
-            <a class='block pad0y' href='/industries/travel'>Travel</a>
+            <a class='block pad0y' href='/industries/drones'>无人机</a>
+            <a class='block pad0y' href='/industries/government'>政府</a>
+            <a class='block pad0y' href='/industries/health'>健康</a>
+            <a class='block pad0y' href='/industries/media'>媒体</a>
+            <a class='block pad0y' href='/industries/travel'>旅行</a>
           </div>
         </div>
         <div class='col4 margin1'>
-          <h3>Examples</h3>
-            <a class='block pad0y' href='/gallery/'>Map Gallery</a>
-            <a class='block pad0y' href='/showcase/'>Customer Showcase</a>
+          <h3>示例</h3>
+            <a class='block pad0y' href='/gallery/'>图集</a>
+            <a class='block pad0y' href='/showcase/'>客户案例</a>
         </div>
       </div>
 
       <div class='subnav-group subnav-documentation clearfix'>
         <div class='col9 clearfix subnavcol'>
-          <h3><a href='/developers/' class='rcon next'>All developer tools</a></h3>
+          <h3><a href='/developers/' class='rcon next'>所有的开发者工具</a></h3>
           <div class='col4'>
             <a class='block pad1y icon gl' href='/mapbox-gl-js/api/'>Mapbox GL JS</a>
             <a class='block pad1y icon apple' href='/ios-sdk/'>Mapbox iOS SDK</a>
@@ -259,34 +259,34 @@ footer:
           </div>
         </div>
         <div class='col3 subnavcol'>
-        <h3>References</h3>
-          <a class='block pad1y' href='/tos'>TOS</a>
-          <a class='block pad1y' href='/privacy/'>Privacy</a>
-          <a class='block pad1y' href='/about/open/'>Open source tools</a>
-          <a class='block pad1y' href='/telemetry/'>Telemetry</a>
+        <h3>参考</h3>
+          <a class='block pad1y' href='/tos'>服务条款</a>
+          <a class='block pad1y' href='/privacy/'>隐私</a>
+          <a class='block pad1y' href='/about/open/'>开源工具</a>
+          <a class='block pad1y' href='/telemetry/'>遥测</a>
         </div>
       </div>
 
       <div class='subnav-group subnav-help clearfix'>
         <div class='col3'>
-          <h3><a href='/help/' class='rcon next'>Help</a></h3>
-          <a class='block pad1y icon search' href='/help/'>Search</a>
-          <a class='block pad1y icon mapbox' href='/help/how-mapbox-works/'>How Mapbox works</a>
-          <a class='block pad1y icon book' href='/help/glossary/'>Glossary</a>
+          <h3><a href='/help/' class='rcon next'>帮助</a></h3>
+          <a class='block pad1y icon search' href='/help/'>搜索</a>
+          <a class='block pad1y icon mapbox' href='/help/how-mapbox-works/'>Mapbox 如何运作</a>
+          <a class='block pad1y icon book' href='/help/glossary/'>词汇表</a>
         </div>
         <div class='col8 margin1 clearfix'>
-          <h3>I would like to</h3>
+          <h3>我想要</h3>
           <div class='col6'>
-            <a class='block pad1y icon paint' href='/help/#design-a-map'>Design a map</a>
-            <a class='block pad1y icon mobile' href='/help/#build-a-mobile-app'>Build a mobile app</a>
-            <a class='block pad1y icon globe' href='/help/#build-a-web-app'>Build a web app</a>
-            <a class='block pad1y icon bolt' href='/help/#extend-my-app-with-web-services'>Extend my app with web services</a>
+            <a class='block pad1y icon paint' href='/help/#design-a-map'>设计地图</a>
+            <a class='block pad1y icon mobile' href='/help/#build-a-mobile-app'>开发移动端 app</a>
+            <a class='block pad1y icon globe' href='/help/#build-a-web-app'>开发网页端 app</a>
+            <a class='block pad1y icon bolt' href='/help/#extend-my-app-with-web-services'>拓展我的 app 网络服务</a>
           </div>
           <div class='col6'>
-            <a class='block pad1y icon satellite'  href='/help/#work-with-data-and-imagery'>Work with data &amp; Imagery</a>
-            <a class='block pad1y icon data' href='/help/#analyze-data'>Analyze Data</a>
-            <a class='block pad1y icon lock' href='/help/#learn-about-mapbox-privacy-and-policies'>Learn about privacy and policies</a>
-            <a class='block pad1y icon account' href='/help/#make-changes-to-my-account'>Make changes to my account</a>
+            <a class='block pad1y icon satellite'  href='/help/#work-with-data-and-imagery'>处理数据和影像</a>
+            <a class='block pad1y icon data' href='/help/#analyze-data'>分析数据</a>
+            <a class='block pad1y icon lock' href='/help/#learn-about-mapbox-privacy-and-policies'>了解隐私权和政策</a>
+            <a class='block pad1y icon account' href='/help/#make-changes-to-my-account'>更改我的账户</a>
           </div>
         </div>
       </div>
@@ -299,17 +299,17 @@ footer:
   <div class='limiter clearfix'>
     <nav class='col12 text-right navigation-padding-top contain animate clearfix noprint'>
       <a class='fl mb-logo' href='/'></a>
-      <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>Enterprise</h4>
+      <h4 class='logo-enterpriseaddon pin-topleft text-aqua block-in-enterprise'>企业</h4>
 
       <!-- Desktop nav -->
       <div class='text-right z10 strong small primary hide-mobile space-top0'>
         <div class='inline align-top'>
-         <div class='dropdown inline fl contain'  data-category='products'> <a href='/products/'     class='contain primary-nav-button fl pad1x pad0y round '>Products</a></div>
-          <div class='dropdown inline fl contain'  data-category='use-cases'> <a href='/industries/'  class='contain primary-nav-button fl pad1x pad0y round'>Industries</a></div>
-         <div class='dropdown inline fl contain'  data-category='documentation'>  <a href='/developers/'  class='contain primary-nav-button fl pad1x pad0y round '>Developers</a></div>
-         <div class='dropdown inline fl contain'  data-category='help'>  <a href='/help/'  class='contain primary-nav-button fl pad1x pad0y round {% if page.url contains '/help' %}active{% endif %}'>Help &amp; Guides</a></div>
-          <div class='inline fl'> <a href='/pricing/'  class='primary-nav-button fl pad1x pad0y round quiet {% if page.url contains '/pricing' %}active{% endif %}'>Pricing</a></div>
-          <div class='inline fl'> <a href='/blog/'   class='primary-nav-button fl pad1x pad0y round quiet {% if page.url contains '/blog' %}active{% endif %}'>Blog</a></div>
+         <div class='dropdown inline fl contain'  data-category='products'> <a href='/products/'     class='contain primary-nav-button fl pad1x pad0y round '>产品</a></div>
+          <div class='dropdown inline fl contain'  data-category='use-cases'> <a href='/industries/'  class='contain primary-nav-button fl pad1x pad0y round'>行业应用</a></div>
+         <div class='dropdown inline fl contain'  data-category='documentation'>  <a href='/developers/'  class='contain primary-nav-button fl pad1x pad0y round '>开发者</a></div>
+         <div class='dropdown inline fl contain'  data-category='help'>  <a href='/help/'  class='contain primary-nav-button fl pad1x pad0y round {% if page.url contains '/help' %}active{% endif %}'>帮助</a></div>
+          <div class='inline fl'> <a href='/pricing/'  class='primary-nav-button fl pad1x pad0y round quiet {% if page.url contains '/pricing' %}active{% endif %}'>价格</a></div>
+          <div class='inline fl'> <a href='/blog/'   class='primary-nav-button fl pad1x pad0y round quiet {% if page.url contains '/blog' %}active{% endif %}'>博客</a></div>
         </div>
         <!-- Hardcoded width so content doesn't jump -->
         <div style='width:130px' class='unfloat inline align-top' id='nav'></div>
@@ -321,25 +321,25 @@ footer:
         <div id='menu' class='js-dropdown-menu scroll-v dropdown-menu offcanvas-top fill-midnight clip col12 pin-top animate'>
           <div class='keyline-bottom clearfix'>
             <div class='mobile-cols pad4y keyline-bottom clearfix'>
-              <a class='pad1 block strong col6' href='/products/'>Products</a>
+              <a class='pad1 block strong col6' href='/products/'>产品</a>
               <a class='pad1 block strong col6' href='/mapbox-studio/'>Mapbox Studio</a>
-              <a class='pad1 block strong col6' href='/data-platform/'>Data</a>
-              <a class='pad1 block strong col6' href='/gallery/'>Gallery</a>
-              <a class='pad1 block strong col6' href='/industries/'>Industries</a>
-              <a class='pad1 block strong col6' href='/help/'>Help</a>
-              <a class='pad1 block strong col6' href='/developers/'>Developers</a>
-              <a class='pad1 block strong col6' href='/blog/'>Blog</a>
-              <a class='pad1 block strong col6' href='/pricing/'>Pricing</a>
+              <a class='pad1 block strong col6' href='/data-platform/'>数据</a>
+              <a class='pad1 block strong col6' href='/gallery/'>图集</a>
+              <a class='pad1 block strong col6' href='/industries/'>行业应用</a>
+              <a class='pad1 block strong col6' href='/help/'>帮助</a>
+              <a class='pad1 block strong col6' href='/developers/'>开发者</a>
+              <a class='pad1 block strong col6' href='/blog/'>博客</a>
+              <a class='pad1 block strong col6' href='/pricing/'>价格</a>
             </div>
             <div id='mobile-nav' class='pad2y clearfix mobile-cols'>
-              <a class='pad1 block strong col6 signin' href='/studio/'>Log in</a>
-              <a class='pad1 block strong col6' href='/studio/signup/'>Sign up</a>
+              <a class='pad1 block strong col6 signin' href='/studio/'>登录</a>
+              <a class='pad1 block strong col6' href='/studio/signup/'>注册</a>
             </div>
           </div>
 
           <div class='clearfix small'>
             <div class='col12 clearfix pad4y keyline-bottom'>
-              <h3 class='pad0y pad1x strong space-bottom1'>Products</h3>
+              <h3 class='pad0y pad1x strong space-bottom1'>产品</h3>
               <div class='col12 pad1x clearfix  mobile-cols '>
                 <a class='pad0y block quiet col6' href='/maps/'>Maps</a>
                 <a class='pad0y block quiet col6' href='/geocoding/'>Geocoding</a>
@@ -352,15 +352,15 @@ footer:
               </div>
             </div>
             <div class='col12 pad1x clearfix  mobile-cols pad4y '>
-              <a class='pad0y block strong quiet col6' href='/about/'>About</a>
-              <a class='pad0y block strong quiet col6' href='/about/team/'>Team</a>
-              <a class='pad0y block strong quiet col6' href='/jobs/'>Jobs</a>
-              <a class='pad0y block strong quiet col6' href='/about/press/'>Press</a>
-              <a class='pad0y block strong quiet col6' href='/tos/'>Legal</a>
-              <a class='pad0y block strong quiet col6' href='/contact/'>Contact</a>
-              <a class='pad0y block strong quiet col6' href='/education/'>Education</a>
-              <a class='pad0y block strong quiet col6' href='/security/'>Security</a>
-              <a class='pad0y block strong quiet col6' href='/about/board'>Board</a>
+              <a class='pad0y block strong quiet col6' href='/about/'>关于</a>
+              <a class='pad0y block strong quiet col6' href='/about/team/'>团队</a>
+              <a class='pad0y block strong quiet col6' href='/jobs/'>招聘</a>
+              <a class='pad0y block strong quiet col6' href='/about/press/'>媒体报道</a>
+              <a class='pad0y block strong quiet col6' href='/tos/'>法律</a>
+              <a class='pad0y block strong quiet col6' href='/contact/'>联系我们</a>
+              <a class='pad0y block strong quiet col6' href='/education/'>教育</a>
+              <a class='pad0y block strong quiet col6' href='/security/'>安全</a>
+              <a class='pad0y block strong quiet col6' href='/about/board'>董事</a>
             </div>
           </div>
         </div>
@@ -378,42 +378,42 @@ footer:
   <div class='limiter clearfix'>
     <div class='footer-in-docs footer-cols-in-docs clearfix col12 pad8y small'>
       <div class='hide-in-docs col2'>
-        <h3 class='space-bottom1'>Overview</h3>
+        <h3 class='space-bottom1'>概览</h3>
         {% for item in layout.footer.mapbox %}
         <a id='footer-{{item.title | downcase | replace:' ','-'}}' class='space-bottom0 quiet col12 strong' href='{{site.url}}{{item.path}}/'>{{item.title}}</a>
         {% endfor %}
       </div>
       <div class='col2 footer-col-in-docs'>
-        <h3 class='space-bottom1'>About us</h3>
+        <h3 class='space-bottom1'>关于我们</h3>
         {% for item in layout.footer.aboutus %}
         <a id='footer-{{item.title | downcase | replace:' ','-'}}' class='space-bottom0 col12 quiet strong' href='{{site.url}}{{item.path}}/'>{{item.title}}</a>
         {% endfor %}
       </div>
       <div class='col2 footer-col-in-docs'>
-        <h3 class='space-bottom1'>Help</h3>
+        <h3 class='space-bottom1'>帮助</h3>
         {% for item in layout.footer.support %}
         <a id='footer-{{item.title | downcase | replace:' ','-'}}' class='space-bottom0 col12 quiet strong' href='{{site.url}}{{item.path}}/'>{{item.title}}</a>
         {% endfor %}
       </div>
        <div class='col2 footer-col-in-docs'>
-        <h3 class='space-bottom1'>Map design</h3>
+        <h3 class='space-bottom1'>地图设计</h3>
         {% for item in layout.footer.mapdesign %}
         <a id='footer-{{item.title | downcase | replace:' ','-'}}' class='space-bottom0 col12 quiet strong' href='{% if item.href %}{{item.href}}{% else %}{{site.url}}{{item.path}}{% endif %}/'>{{item.title}}</a>
         {% endfor %}
       </div>
       <div class='col2 footer-col-in-docs'>
-        <h3 class='space-bottom1'>Developers</h3>
+        <h3 class='space-bottom1'>开发者</h3>
         {% for item in layout.footer.developers %}
         <a id='footer-{{item.title | downcase | replace:' ','-'}}' class='space-bottom0 col12 quiet strong' href='{% if item.href %}{{item.href}}{% else %}{{site.url}}{{item.path}}{% endif %}/'>{{item.title}}</a>
         {% endfor %}
         <a href='{{site.url}}/developers/' class='small rcon next quiet'>All developers</a>
       </div>
       <div class='hide-in-docs col2 footer-col-in-docs'>
-        <h3 class='space-bottom1'>Industries</h3>
+        <h3 class='space-bottom1'>行业应用</h3>
         {% for item in layout.footer.industries %}
         <a id='footer-{{item.title | downcase | replace:' ','-'}}' class='space-bottom0 col12 quiet strong' href='{% if item.href %}{{item.href}}{% else %}{{site.url}}{{item.path}}{% endif %}/'>{{item.title}}</a>
         {% endfor %}
-        <a href='{{site.url}}/industries/' class='small rcon next quiet'>All industries</a>
+        <a href='{{site.url}}/industries/' class='small rcon next quiet'>所有行业</a>
       </div>
     </div>
 
@@ -423,13 +423,13 @@ footer:
     <div class='contain col4 footer-social'>
       <div class='animate footer-animation col6'></div>
       <div class='footer-dialog fr small strong pad2 col6 contain round fill-darken0'>
-      Follow Mapbox on <a href='https://twitter.com/mapbox'>Twitter</a>, <a href='https://www.facebook.com/Mapbox'>Facebook</a>, <a href='https://instagram.com/mapbox'>Instagram</a> and <a href="https://www.linkedin.com/company/mapbox">LinkedIn</a>.
+      在 <a href='https://twitter.com/mapbox'>Twitter</a>、<a href='https://www.facebook.com/Mapbox'>Facebook</a>、<a href='https://instagram.com/mapbox'>Instagram</a> 和 <a href="https://www.linkedin.com/company/mapbox">LinkedIn</a> 上关注 Mapbox。
       </div>
     </div>
     <div class='margin1 col7 pad2 fill-darken0 round contain'>
       <form id='newsletter' method='post'>
-        <h3 class='space-bottom1'>Sign up for our newsletter</h3>
-        <p class='quiet'>Keep up with Mapbox product announcements, events, and walkthroughs.</p>
+        <h3 class='space-bottom1'>订阅我们的新闻</h3>
+        <p class='quiet'>实时关注 Mapbox 的产品发布、事件、以及突破。</p>
         <fieldset class='clearfix newsletter-in-docs input-pill col12 pill with-icon'>
           <span class='icon mail quiet'></span>
           <input type='text' value='' placeholder='Email address' name='email' class='col9 required email'>
@@ -441,16 +441,16 @@ footer:
 </div>
 
 <div class='footer-in-docs terms-in-docs col12 center footer-copyright small pad4 noprint fill-light contain' data-swiftype-index='false'>
-  <a href='{{site.url}}/tos'>Terms</a> +
-  <a href='{{site.url}}/privacy'>Privacy</a>
+  <a href='{{site.url}}/tos'>条款</a> +
+  <a href='{{site.url}}/privacy'>隐私</a>
   &copy; Mapbox
 </div>
 {% endunless %}
 
 {% if page.url contains '/hello/directions' %}
 <div class='footer-in-docs terms-in-docs col12 center footer-copyright small pad4 noprint fill-light contain' data-swiftype-index='false'>
-  <a href='{{site.url}}/tos'>Terms</a> +
-  <a href='{{site.url}}/privacy'>Privacy</a>
+  <a href='{{site.url}}/tos'>条款</a> +
+  <a href='{{site.url}}/privacy'>隐私</a>
   &copy; Mapbox
 </div>
 {% endif %}

@@ -7,14 +7,14 @@
   </div>
   <div>
     <em class='inline quiet'>
-      <%= prop.required ? 'Required' : 'Optional' %>
+      <%= prop.required ? '必选' : '可选' %>
       <% if (prop.type && prop.type !== '*') { %><a href='#types-<%= prop.type %>'><%= prop.type %></a>.<% } %>
     </em>
     <% if (prop.values && Array.isArray(prop.values) === false) { // skips $root.version %><span class='space-right quiet'>
-      <em>One of</em> <%= _(Object.keys(prop.values)).map(function(opt) { return '<var>' + opt + '</var>' }).join(', ') %>.
+      <em>可选的值有</em> <%= _(Object.keys(prop.values)).map(function(opt) { return '<var>' + opt + '</var>' }).join(', ') %>.
     </span><% } %>
     <% if (prop.units) { %><span class='space-right quiet'>
-      <em>Units in</em>
+      <em>单位为</em>
       <% if (typeof prop.units === 'object') { %>
         <%= _(prop.units).map(function(opt) { return '<var>' + opt + '</var>' }).join(', ') %>.
       <% } else { %>
@@ -22,23 +22,23 @@
       <% } %>
     </span><% } %>
     <% if (prop.default || prop.default === false || prop.default === 0) { %><span class='space-right quiet'>
-      <em>Defaults to </em> <var><%= prop.default %></var>.
+      <em>默认为 </em> <var><%= prop.default %></var>.
     </span><% } %>
     <% if (prop.requires) { %><span class='space-right quiet'>
       <%= _(prop.requires).map(function(req) {
           if (typeof req === 'string') {
-            return '<em>Requires</em> <var>' + req + '</var>.';
+            return '<em>需要</em> <var>' + req + '</var>.';
           } else {
             if (req['!']) {
-              return '<em>Disabled by</em> <var>' + req['!'] + '</var>.';
+              return '<em>设置</em> <var>' + req['!'] + '</var> <em>后无效</em>.';
             } else if (req['<=']) {
-              return '<em>Must be less than or equal to</em> <var>' + req['<='] + '</var>.';
+              return '<em>必须小于等于</em> <var>' + req['<='] + '</var>.';
             } else {
               var requiredValue = _.toPairs(req)[0][1];
               var requiredDisplay = _.isArray(requiredValue)
                 ? '</var>one of<var> ' + requiredValue.join('</var>,<var> ')
                 : requiredValue;
-              return '<em>Requires</em> <var>' + _.toPairs(req)[0][0] + ' = ' + requiredDisplay + '</var>.';
+              return '<em>需要</em> <var>' + _.toPairs(req)[0][0] + ' = ' + requiredDisplay + '</var>.';
             }
           }
         }).join(' ') %>
@@ -63,9 +63,9 @@
   <% if (prop['sdk-support']) {
     var support = function(type, sdk) {
       var support = prop['sdk-support'][type];
-      if (!support) return 'Not yet supported';
+      if (!support) return '不支持';
       support = support[sdk];
-      if (support === undefined) return 'Not yet supported';
+      if (support === undefined) return '不支持';
       return '>= ' + support;
     }
   %>
@@ -73,7 +73,7 @@
     <table class='micro fixed'>
       <thead>
       <tr class='fill-light'>
-        <th>SDK Support</th>
+        <th>SDK 支持</th>
         <td class='center'>Mapbox GL JS</td>
         <td class='center'>iOS SDK</td>
         <td class='center'>Android SDK</td>

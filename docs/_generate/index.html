@@ -1,12 +1,12 @@
 ---
 layout: default
 category: reference
-title: Mapbox Style Specification
+title: Mapbox 地图样式规范
 permalink: /
 class: fill-light
 options: full
 navigation:
-  - title: Root
+  - title: 根节点
     subnav:
     - title: version
     - title: name
@@ -20,20 +20,20 @@ navigation:
     - title: glyphs
     - title: transition
     - title: layers
-  - title: Sources
+  - title: 数据源
     subnav:
     - title: Vector
     - title: Raster
     - title: GeoJSON
     - title: Image
     - title: Video
-  - title: Sprite
-  - title: Glyphs
-  - title: Transition
+  - title: 图标
+  - title: 字体
+  - title: 过渡
     subnav:
     - title: duration
     - title: delay
-  - title: Layers
+  - title: 图层
     subnav:
     - title: Background
     - title: Fill
@@ -41,7 +41,7 @@ navigation:
     - title: Symbol
     - title: Raster
     - title: Circle
-  - title: Types
+  - title: 类型
     subnav:
     - title: Color
     - title: Enum
@@ -83,9 +83,9 @@ navigation:
       </div>
       <div class='col9 dark tabs mobile-cols pad1'><!--
         --><a href='https://mapbox.com/mapbox-gl-js/api' class='col3 truncate'>API</a><!--
-        --><a href='#' class='col3 truncate active'>Style Specification</a><!--
-        --><a href='https://mapbox.com/mapbox-gl-js/examples' class='col3 truncate'>Examples</a><!--
-        --><a href='https://mapbox.com/mapbox-gl-js/plugins' class='col3 truncate'>Plugins</a>
+        --><a href='#' class='col3 truncate active'>样式规范</a><!--
+        --><a href='https://mapbox.com/mapbox-gl-js/examples' class='col3 truncate'>示例</a><!--
+        --><a href='https://mapbox.com/mapbox-gl-js/plugins' class='col3 truncate'>插件</a>
       </div>
     </nav>
   </div>
@@ -93,20 +93,20 @@ navigation:
   <div class='contain margin3 col9 pad2'>
     <div class='prose'>
       <h1>{{ page.title }}</h1>
-      <p>A Mapbox style is a document that defines the visual appearance of a map: what data to draw, the order to draw it in, and how to style the data when drawing it. A style document is a <a href="http://www.json.org/">JSON</a> object with specific root level and nested properties. This specification defines and describes these properties.</p>
-      <p>The intended audience of this specification includes:
+      <p>Mapbox 样式文件定义的是地图所呈现的视觉外观，包括：需要绘制哪些数据、绘制的顺序、以及绘制数据时如何进行符号化。样式文档是以 <a href="http://www.json.org/">JSON</a> 对象中的属性字段进行组织的。此规范对这些属性字段进行定义和描述。</p>
+      <p>此文档面向的对象包括：
       <ul>
-      <li>Advanced designers and cartographers who want to write styles by hand rather than use <a href='https://www.mapbox.com/studio'>Mapbox Studio</a></li>
-      <li>Developers using style-related features of <a href='https://www.mapbox.com/mapbox-gl-js/'>Mapbox GL JS</a> or the Mapbox <a href='https://www.mapbox.com/ios-sdk/'>iOS</a> or <a href='https://www.mapbox.com/android-sdk/'>Android</a> SDKs</li>
-      <li>Authors of software that generates or processes Mapbox styles.</li>
+      <li>更倾向于手写样式而不是使用 <a href='https://www.mapbox.com/studio'>Mapbox Studio</a> 生成样式的高级设计师和制图人员</li>
+      <li>希望使用 <a href='https://www.mapbox.com/mapbox-gl-js/'>Mapbox GL JS</a> 或 Mapbox <a href='https://www.mapbox.com/ios-sdk/'>iOS</a> 或 <a href='https://www.mapbox.com/android-sdk/'>Android</a> SDK 中样式相关特性的开发者</li>
+      <li>开发生成或处理 Mapbox 样式文件的软件工具开发者。</li>
       </ul>
       </p>
     </div>
 
     <div class='prose'>
       <a id='root' class='anchor'></a>
-      <h2><a href='#root' title='link to root'>Root Properties</a></h2>
-      <p>Root level properties of a Mapbox style specify the map's layers, tile sources and other resources, and default values for the initial camera position when not specified elsewhere.</p>
+      <h2><a href='#root' title='link to root'>根节点属性</a></h2>
+      <p>根节点属性字段规定了样式中地图的图层、瓦片数据源和其他资源、以及其他地方未指定时相机的默认参数。</p>
       <div class='space-bottom1 clearfix'>
 {% highlight json%}
 {
@@ -131,25 +131,18 @@ navigation:
 
     <div class='pad2 prose'>
       <a id='sources' class='anchor'></a>
-      <h2><a href='#sources' title='link to sources'>Sources</a></h2>
+      <h2><a href='#sources' title='link to sources'>数据源</a></h2>
       <p>
-        Sources supply data to be shown on the map. The type of source is specified by the <code>"type"</code> property,
-        and must be one of <var><%= source_types.join('</var>, <var>') %></var>. Adding a source
-        won't immediately make data appear on the map because sources don't contain
-        styling details like color or width. Layers refer
-        to a source and give it a visual representation. This makes it possible
-        to style the same source in different ways, like differentiating between
-        types of roads in a highways layer.
+        数据源提供地图显示的数据。数据源的类型通过 <code>"type"</code> 属性指定，并且必须是 <var><%= source_types.join('</var>, <var>') %></var> 其中之一。仅添加数据源并不会立即显示在地图上，因为缺少样式信息如颜色或线宽。通过图层引用数据源将其显示出来。可以对同一数据源采用多种方式渲染，例如在高速路图层中对不同的等级的公路进行分别渲染以示区分。
       </p>
       <p>
-        Tiled sources (vector and raster) must specify
-        their details in terms of the <a href="https://github.com/mapbox/tilejson-spec">TileJSON specification</a>.
-        This can be done in several ways:
+        瓦片数据源（矢量和栅格）必须按照 <a href="https://github.com/mapbox/tilejson-spec">TileJSON 规范</a> 来设置数据源信息。
+        可通过多种方式指定：
       </p>
       <ul>
         <li>
-          By supplying TileJSON properties such as <code>"tiles"</code>, <code>"minzoom"</code>, and
-          <code>"maxzoom"</code> directly in the source:
+          在数据源字段中直接提供 TileJSON 属性字段如 <code>"tiles"</code>、<code>"minzoom"</code>、和
+          <code>"maxzoom"</code>：
           <div class='space-bottom1 clearfix'>
 {% highlight json%}
 "mapbox-streets": {
@@ -164,7 +157,7 @@ navigation:
           </div>
         </li>
         <li>
-          By providing a <code>"url"</code> to a TileJSON resource:
+          提供一个指向 TileJOSN 文件的 <code>"url"</code>：
           <div class='space-bottom1 clearfix'>
 {% highlight json%}
 "mapbox-streets": {
@@ -175,11 +168,9 @@ navigation:
           </div>
         </li>
         <li>
-          By providing a url to a WMS server that supports
-          EPSG:3857 (or EPSG:900913) as a source of tiled data.
-          The server url should contain a <code>"{bbox-epsg-3857}"</code>
-          replacement token to supply the <code>bbox</code> parameter.
-          <em>(This feature is currently supported only in Mapbox GL JS and Mapbox macOS SDK.)</em>
+          提供一个 url 指向支持EPSG:3857（或 EPSG:900913）坐标的 WMS 地图服务，作为瓦片的数据源。
+          服务的 url 应该包含一个 <code>"{bbox-epsg-3857}"</code> 替换符，用以提供 <code>bbox</code> 参数。
+          <em>(此项功能目前仅支持 Mapbox GL JS 和 Mapbox macOS SDK。)</em>
 {% highlight json%}
 "wms-imagery": {
   "type": "raster",
@@ -197,10 +188,9 @@ navigation:
         <div id='sources-vector' class='pad2 keyline-bottom'>
           <h3 class='space-bottom1'><a href='#sources-vector' title='link to vector'>vector</a></h3>
           <p>
-            A vector tile source. Tiles must be in <a href="https://www.mapbox.com/developers/vector-tiles/">Mapbox
-            Vector Tile format</a>. All geometric coordinates in vector tiles must be between <code>-1 * extent</code> and <code>(extent * 2) - 1</code> inclusive. All layers that use a vector source must specify a <code>"source-layer"</code> value.
-            For vector tiles hosted by Mapbox, the <code>"url"</code> value should be of the
-            form <code>mapbox://<var>mapid</var></code>.
+            矢量瓦片数据源。瓦片必须是 <a href="https://www.mapbox.com/developers/vector-tiles/">Mapbox
+            Vector Tile 格式</a>。瓦片中所有的几何坐标必须在 <code>-1 * extent</code> 和 <code>(extent * 2) - 1</code> 之间（包括界限值）。所有引用矢量数据源的图层必须指定 <code>"source-layer"</code> 属性。
+            对于 Mapbox 托管的矢量瓦片，<code>"url"</code> 的形式为 <code>mapbox://<var>mapid</var></code>。
           </p>
           <div class='space-bottom1 clearfix'>
 {% highlight json%}
@@ -223,7 +213,7 @@ navigation:
           <table class="micro">
             <thead>
             <tr class='fill-light'>
-              <th>SDK Support</th>
+              <th>SDK 支持</th>
               <td class='center'>Mapbox GL JS</td>
               <td class='center'>iOS SDK</td>
               <td class='center'>Android SDK</td>
@@ -231,7 +221,7 @@ navigation:
             </thead>
             <tbody>
             <tr>
-              <td>basic functionality</td>
+              <td>基本功能</td>
               <td class='center'>&gt;= 0.10.0</td>
               <td class='center'>&gt;= 2.0.0</td>
               <td class='center'>&gt;= 2.0.1</td>
@@ -242,8 +232,7 @@ navigation:
         <div id='sources-raster' class='pad2 keyline-bottom'>
           <h3 class='space-bottom1'><a href='#sources-raster' title='link to raster'>raster</a></h3>
           <p>
-            A raster tile source. For raster tiles hosted by Mapbox, the <code>"url"</code> value should be of the
-            form <code>mapbox://<var>mapid</var></code>.
+            对于 Mapbox 托管的矢量瓦片，<code>"url"</code> 的形式为 <code>mapbox://<var>mapid</var></code>。
           </p>
           <div class='space-bottom1 clearfix'>
 {% highlight json%}
@@ -263,7 +252,7 @@ navigation:
           <table class="micro">
             <thead>
             <tr class='fill-light'>
-              <th>SDK Support</th>
+              <th>SDK 支持</th>
               <td class='center'>Mapbox GL JS</td>
               <td class='center'>iOS SDK</td>
               <td class='center'>Android SDK</td>
@@ -271,7 +260,7 @@ navigation:
             </thead>
             <tbody>
             <tr>
-              <td>basic functionality</td>
+              <td>基本功能</td>
               <td class='center'>&gt;= 0.10.0</td>
               <td class='center'>&gt;= 2.0.0</td>
               <td class='center'>&gt;= 2.0.1</td>
@@ -282,8 +271,8 @@ navigation:
         <div id='sources-geojson' class='pad2 keyline-bottom'>
           <h3 class='space-bottom1'><a href='#sources-geojson' title='link to geojson'>geojson</a></h3>
           <p>
-            A <a href="http://geojson.org/">GeoJSON</a> source. Data must be provided via a <code>"data"</code>
-            property, whose value can be a URL or inline GeoJSON.
+            <a href="http://geojson.org/">GeoJSON</a> 数据源。数据源必须指定 <code>"data"</code>
+            属性，其值可以为 URL 或者内联的 GeoJSON。
           </p>
   <div class='space-bottom1 clearfix'>
 {% highlight json%}
@@ -304,9 +293,7 @@ navigation:
 {% endhighlight %}
           </div>
         <p>
-          This example of a GeoJSON source refers to an external GeoJSON document via its URL. The
-          GeoJSON document must be on the same domain or accessible using
-          <a href='http://enable-cors.org/'>CORS</a>.
+          以下示例是一个通过 URL 方式指向一个外部 GeoJSON 文件的 GeoJSON 数据源。GeoJSON 文件必须在同一域上或者可通过 <a href='http://enable-cors.org/'>CORS</a> 方式访问到。
         </p>
   <div class='space-bottom1 clearfix'>
 {% highlight json%}
@@ -325,7 +312,7 @@ navigation:
           <table class="micro">
             <thead>
             <tr class='fill-light'>
-              <th>SDK Requirements</th>
+              <th>SDK 支持</th>
               <td class='center'>Mapbox GL JS</td>
               <td class='center'>iOS SDK</td>
               <td class='center'>Android SDK</td>
@@ -333,15 +320,15 @@ navigation:
             </thead>
             <tbody>
             <tr>
-              <td>basic functionality</td>
+              <td>基础功能</td>
               <td class='center'>&gt;= 0.10.0</td>
               <td class='center'>&gt;= 2.0.0</td>
               <td class='center'>&gt;= 2.0.1</td></tr>
             <tr>
-              <td>clustering</td>
+              <td>聚类</td>
               <td class='center'>&gt;= 0.14.0</td>
-              <td class='center'>Not yet supported</td>
-              <td class='center'>Not yet supported</td>
+              <td class='center'>暂不支持</td>
+              <td class='center'>暂不支持</td>
             </tr>
             </tbody>
           </table>
@@ -349,11 +336,10 @@ navigation:
         <div id='sources-image' class='pad2 keyline-bottom'>
           <h3 class='space-bottom1'><a href='#sources-image' title='link to image'>image</a></h3>
           <p>
-            An image source. The <code>"url"</code> value contains the image location.
+            图片数据源。<code>"url"</code> 包含了图片文件的位置。
           </p>
           <p>
-            The <code>"coordinates"</code> array contains <code>[longitude, latitude]</code> pairs for the image
-            corners listed in clockwise order: top left, top right, bottom right, bottom left.
+            <code>"coordinates"</code> 数组包含图片四角的 <code>[经度, 纬度]</code> 坐标对，以顺时针方向排列：左上角、右上角、右下角、左下角。
           </p>
           <div class='space-bottom1 clearfix'>
 {% highlight json%}
@@ -378,7 +364,7 @@ navigation:
           <table class="micro">
             <thead>
             <tr class='fill-light'>
-              <th>SDK Support</th>
+              <th>SDK 支持</th>
               <td class='center'>Mapbox GL JS</td>
               <td class='center'>iOS SDK</td>
               <td class='center'>Android SDK</td>
@@ -386,10 +372,10 @@ navigation:
             </thead>
             <tbody>
             <tr>
-              <td>basic functionality</td>
+              <td>基础功能</td>
               <td class='center'>&gt;= 0.10.0</td>
-              <td class='center'><a href="https://github.com/mapbox/mapbox-gl-native/issues/1350">Not yet supported</a></td>
-              <td class='center'><a href="https://github.com/mapbox/mapbox-gl-native/issues/1350">Not yet supported</a></td>
+              <td class='center'><a href="https://github.com/mapbox/mapbox-gl-native/issues/1350">暂不支持</a></td>
+              <td class='center'><a href="https://github.com/mapbox/mapbox-gl-native/issues/1350">暂不支持</a></td>
             </tr>
             </tbody>
           </table>
@@ -397,13 +383,10 @@ navigation:
         <div id='sources-video' class='pad2 keyline-bottom'>
           <h3 class='space-bottom1'><a href='#sources-video' title='link to video'>video</a></h3>
           <p>
-            A video source. The <code>"urls"</code> value is an array. For each URL in the array,
-            a video element <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source">source</a> will
-            be created, in order to support same media in multiple formats supported by different browsers.
+            视频数据源。<code>"urls"</code> 的值是一个数组。对于数组中的每一个 URL，将会生成一个 video 元素的 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source">源</a>，以满足不同浏览器对视频格式的要求。
           </p>
           <p>
-            The <code>"coordinates"</code> array contains <code>[longitude, latitude]</code> pairs for the video
-            corners listed in clockwise order: top left, top right, bottom right, bottom left.
+            <code>"coordinates"</code> 数组包含视频四角的 <code>[经度, 纬度]</code> 坐标对，以顺时针方向排列：左上角、右上角、右下角、左下角。
           </p>
           <div class='space-bottom1 clearfix'>
 {% highlight json%}
@@ -431,7 +414,7 @@ navigation:
           <table class="micro">
             <thead>
             <tr class='fill-light'>
-              <th>SDK Support</th>
+              <th>SDK 支持</th>
               <td class='center'>Mapbox GL JS</td>
               <td class='center'>iOS SDK</td>
               <td class='center'>Android SDK</td>
@@ -439,10 +422,10 @@ navigation:
             </thead>
             <tbody>
             <tr>
-              <td>basic functionality</td>
+              <td>基础功能</td>
               <td>&gt;= 0.10.0</td>
-              <td><a href="https://github.com/mapbox/mapbox-gl-native/issues/601">Not yet supported</a></td>
-              <td><a href="https://github.com/mapbox/mapbox-gl-native/issues/601">Not yet supported</a></td>
+              <td><a href="https://github.com/mapbox/mapbox-gl-native/issues/601">暂不支持</a></td>
+              <td><a href="https://github.com/mapbox/mapbox-gl-native/issues/601">暂不支持</a></td>
             </tr>
             </tbody>
           </table>
@@ -468,7 +451,7 @@ navigation:
       </p>
 
       <p>
-        A valid sprite source must supply two types of files:
+        一个有效的雪碧图源必须包含两种文件：
       </p>
       <ul>
         <li>
