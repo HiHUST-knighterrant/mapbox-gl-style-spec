@@ -594,14 +594,14 @@ navigation:
     <div class='pad2 prose'>
       <a id='types' class='anchor'></a>
       <h2><a href='#types' title='link to types'>值类型</a></h2>
-      <p>A Mapbox style contains values of various types, most commonly as values for the style properties of a layer.</p>
+      <p>Mapbox 样式文件包含多种不同类型的值，其中大多数是图层相关的属性。</p>
 
       <div class='keyline-all fill-white'>
         <div class='pad2 keyline-bottom'>
           <a id='types-color' class='anchor'></a>
           <h3 class='space-bottom1'><a href='#types-color' title='link to color'>Color</a></h3>
           <p>
-            Colors are written as JSON strings in a variety of permitted formats: HTML-style hex values, rgb, rgba, hsl, and hsla. Predefined HTML colors names, like <code>yellow</code> and <code>blue</code>, are also permitted.
+            颜色值以 JSON 字符串的形式定义，允许的格式有：HTML 风格的 hex 值、rgb、rbga、hsl、和hsla。HTML 保留的颜色名称如 <code>yellow</code> 和 <code>blue</code>也可以使用。
           </p>
 {% highlight json %}
 {
@@ -615,13 +615,13 @@ navigation:
 }
 {% endhighlight %}
 
-          <p>Especially of note is the support for hsl, which can be <a href='http://mothereffinghsl.com/'>easier to reason about than rgb()</a>.</p>
+          <p>支持 hsl，是因为<a href='http://mothereffinghsl.com/'>比 rgb() 更易理解</a>。</p>
         </div>
 
         <div class='pad2 keyline-bottom'>
           <a id='types-enum' class='anchor'></a>
           <h3 class='space-bottom1'><a href='#types-enum' title='link to enum'>Enum</a></h3>
-          <p>One of a fixed list of string values. Use quotes around values.</p>
+          <p>从字符串形式的值列表中选择一个。在值两边使用引号括起来。</p>
 {% highlight json %}
 {
   "text-transform": "uppercase"
@@ -632,7 +632,7 @@ navigation:
         <div class='pad2 keyline-bottom'>
           <a id='types-string' class='anchor'></a>
           <h3 class='space-bottom1'><a href='#types-string' title='link to string'>String</a></h3>
-          <p>A string is basically just text. In Mapbox styles, you're going to put it in quotes. Strings can be anything, though pay attention to the case of <code>text-field</code> - it actually will refer to features, which you refer to by putting them in curly braces, as seen in the example below.</p>
+          <p>字符串即文本。在 Mapbox 样式文件中，字符串要用引号括起来。字符串可以为任意内容，但是要注意 <code>text-field</code> ——它实际上是通过花括号的方式引用要素，如下例。</p>
 {% highlight json %}
 {
   "text-field": "{MY_FIELD}"
@@ -643,7 +643,7 @@ navigation:
         <div class='pad2 keyline-bottom'>
           <a id='types-boolean' class='anchor'></a>
           <h3 class='space-bottom1'><a href='#types-boolean' title='link to boolean'>Boolean</a></h3>
-          <p>Boolean means yes or no, so it accepts the values <code>true</code> or <code>false</code>.</p>
+          <p>布尔值表示是或否，接受的值有 <code>true</code> 或 <code>false</code>。</p>
 {% highlight json %}
 {
   "fill-enabled": true
@@ -654,7 +654,7 @@ navigation:
         <div class='pad2 keyline-bottom'>
           <a id='types-number' class='anchor'></a>
           <h3 class='space-bottom1'><a href='#types-number' title='link to number'>Number</a></h3>
-          <p>A number value, often an integer or floating point (decimal number). Written without quotes.</p>
+          <p>数值，通常为整数或浮点数（十进制）。不需要用引号括起来。</p>
 {% highlight json %}
 {
   "text-size": 24
@@ -665,8 +665,7 @@ navigation:
         <div class='pad2 keyline-bottom'>
           <a id='types-array' class='anchor'></a>
           <h3 class='space-bottom1'><a href='#types-array' title='link to array'>Array</a></h3>
-          <p>Arrays are comma-separated lists of one or more numbers in a specific
-          order. For example, they're used in line dash arrays, in which the numbers specify intervals of line, break, and line again.</p>
+          <p>数组是以一定顺序、以逗号分隔的一个或多个数值。它们被用来设置虚线，指定虚线实部和虚部的长度间隔。</p>
 {% highlight json %}
 {
   "line-dasharray": [2, 4]
@@ -678,35 +677,35 @@ navigation:
           <a id='types-function' class='anchor'></a>
           <h3 class='space-bottom1'><a href='#types-function' title='link to function'>Function</a></h3>
 
-          <p>The value for any layout or paint property may be specified as a <em>function</em>. Functions allow you to make the appearance of a map feature change with the current zoom level and/or the feature's properties.</p>
+          <p>任何 layout 或 paint 属性可以设置成 <em>函数</em>. 函数使得地图要素的样式随当前缩放级别和要素字段变化。</p>
 
           <div class='col12 pad1x space-bottom2'>
             <ul>
               <li class='pad0y'>
-                <div><span class='code'>stops</span><em class='pad1x quiet'>Required <a href='#types-array'>array</a>.</em></div>
-                <div class='pad1x'>Functions are defined in terms of input and output values. A set of one input value and one output value is known as a "stop."</div>
+                <div><span class='code'>stops</span><em class='pad1x quiet'>必选 <a href='#types-array'>array</a>.</em></div>
+                <div class='pad1x'>函数按照输入和输出进行定义。一对输入输出就是一个“stop”。</div>
               </li>
               <li class='pad0y'>
-                <div><span class='code'>property</span><em class='pad1x quiet'>Optional <a href='#types-string'>string</a>.</em></div>
-                <div class='pad1x'>If specified, the function will take the specified feature property as an input. See <a href="#types-function-zoom-property">Zoom Functions and Property Functions</a> for more information.</div>
+                <div><span class='code'>property</span><em class='pad1x quiet'>可选 <a href='#types-string'>string</a>.</em></div>
+                <div class='pad1x'>如果指定，函数将会把相应要素字段作为输入。另见 <a href="#types-function-zoom-property">字段函数</a>。</div>
               </li>
               <li class='pad0y'>
-                <div><span class='code'>base</span><em class='pad1x quiet'>Optional <a href='#types-number'>number</a>. Default is <%= ref.function.base.default %>.</em></div>
-                <div class='pad1x'>The exponential base of the interpolation curve. It controls the rate at which the function output increases. Higher values make the output increase more towards the high end of the range. With values close to 1 the output increases linearly.</div>
+                <div><span class='code'>base</span><em class='pad1x quiet'>可选 <a href='#types-number'>number</a>. 默认为 <%= ref.function.base.default %>.</em></div>
+                <div class='pad1x'>插值曲线的指数基底。控制断点插值的增长速率。值越大，在靠近上限的一端增长越快。1 表示线性插值。</div>
               </li>
               <li class='pad0y'>
-                <div><span class='code'>type</span><em class='pad1x quiet'>Optional <a href='#types-string'>enum</a>. One of <var>identity</var>, <var>exponential</var>, <var>interval</var>, <var>categorical</var>.</em></div>
+                <div><span class='code'>type</span><em class='pad1x quiet'>可选 <a href='#types-string'>enum</a>. 可选的值有 <var>identity</var>, <var>exponential</var>, <var>interval</var>, <var>categorical</var>.</em></div>
                 <div class='pad1x'>
-                    <div class=''></span><var>identity</var> functions return their input as their output.</div>
-                    <div class=''><var>exponential</var> functions generate an output by interpolating between stops just less than and just greater than the function input. This is the default for <span class='icon smooth-ramp quiet micro space-right indivne' title='continuous'></span> properties.</div>
-                    <div class=''></span><var>interval</var> functions return the output value of the stop just less than the function input. This is the default for <span class='icon step-ramp quiet micro space-right indivne' title='discrete'></span> properties.</div>
-                    <div class=''></span><var>categorical</var> functions return the output value of the stop equal to the function input.</div>
+                    <div class=''></span><var>identity</var> 函数的输出与输入相同。</div>
+                    <div class=''><var>exponential</var> 函数在断点间插值的结果稍小于和稍大于函数输入。 这是 <span class='icon smooth-ramp quiet micro space-right indivne' title='continuous'></span> 属性的默认设置。</div>
+                    <div class=''></span><var>interval</var> 函数输出的断点值稍小于函数输入。这是 <span class='icon step-ramp quiet micro space-right indivne' title='discrete'></span> 属性的默认设置。</div>
+                    <div class=''></span><var>categorical</var> 函数输出的断点值等于函数输入。</div>
                 </ul>
               </li>
             </ul>
           </div>
 
-          <p><strong>Zoom functions</strong> allow the appearance of a map feature to change with map’s zoom. Zoom functions can be used to create the illusion of depth and control data density. Each stop is an array with two elements, the first is a zoom and the second is a function output value.</p>
+          <p><strong>缩放函数</strong>允许地图要素的样式随缩放级别变化。缩放用来产生视觉深度和控制数据显示密度。每个断点由两个元素组成，第一个是缩放级别，第二个是函数输出的值。</p>
 
           <div class='col12 space-bottom'>
               {% highlight js %}
@@ -726,7 +725,7 @@ navigation:
               {% endhighlight %}
           </div>
 
-          <p><strong>Property functions</strong> allow the appearance of a map feature to change with its properties. Property functions can be used to visually differentate types of features within the same layer or create data visualizations. Each stop is an array with two elements, the first is a property input value and the second is a function output value. Note that support for property functions is not available across all properties and platforms at this time.</p>
+          <p><strong>字段函数</strong>允许地图要素样式随其字段值变化。字段函数用来区分同一个图层中不同类型的要素，或者进行数据可视化。每个断点由两个元素组成，第一个是字段的值，第二个是函数输出的值。需要注意的是，现阶段不是所有的样式属性、所有的平台都支持字段函数。</p>
 
           <div class='col12 space-bottom'>
               {% highlight js %}
@@ -747,7 +746,7 @@ navigation:
               {% endhighlight %}
           </div>
 
-          <p><strong>Zoom-and-property functions</strong> allow the appearance of a map feature to change with both its properties <em>and</em> zoom. Each stop is an array with two elements, the first is an object with a property input value and a zoom, and the second is a function output value. Note that support for property functions is not yet complete.</p>
+          <p><strong>缩放+字段函数</strong>允许地图要素样式随缩放级别<em>和</em> 字段进行变化。每个断点由两个元素组成，第一个是包含字段值和缩放级别的对象，第二个值是函数输出的值。需要注意的是对字段函数的支持还不完整。</p>
 
           <div class='col12 space-bottom'>
               {% highlight js %}
@@ -779,85 +778,76 @@ navigation:
         <div class='pad2'>
           <a id='types-filter' class='anchor'></a>
           <h3 class='space-bottom1'><a href='#types-filter' title='link to filter'>Filter</a></h3>
-          <p>A filter selects specific features from a layer. A filter is an array of one of the following forms:</p>
+          <p>过滤器从图层中选择特定的要素。过滤器是由以下形式的过滤条件构成的数组：</p>
 
           <div class='col12 clearfix space-bottom2'>
 
-            <h4>Existential Filters</h4>
+            <h4>存在与否过滤条件</h4>
 
             <div class='space-bottom1'>
-              <code>["has", <var>key</var>]</code> <span class='quiet pad1x strong small'><var>feature[key]</var> exists</span>
+              <code>["has", <var>key</var>]</code> <span class='quiet pad1x strong small'><var>feature[key]</var> 存在</span>
             </div>
             <div class='space-bottom1'>
-              <code>["!has", <var>key</var>]</code> <span class='quiet pad1x strong small'><var>feature[key]</var> does not exist</span>
-            </div>
-
-            <h4>Comparison Filters</h4>
-
-            <div class='space-bottom1'>
-              <code>["==", <var>key</var>, <var>value</var>]</code> <span class='quiet pad1x strong small'>equality: <var>feature[key]</var> = <var>value</var></span>
-            </div>
-            <div class='space-bottom1'>
-              <code>["!=", <var>key</var>, <var>value</var>]</code> <span class='quiet pad1x strong small'>inequality: <var>feature[key]</var> ≠ <var>value</var></span>
-            </div>
-            <div class='space-bottom1'>
-              <code>["&gt;", <var>key</var>, <var>value</var>]</code> <span class='quiet pad1x strong small'>greater than: <var>feature[key]</var> > <var>value</var></span>
-            </div>
-            <div class='space-bottom1'>
-              <code>["&gt;=", <var>key</var>, <var>value</var>]</code> <span class='quiet pad1x strong small'>greater than or equal: <var>feature[key]</var> ≥ <var>value</var></span>
-            </div>
-            <div class='space-bottom1'>
-              <code>["&lt;", <var>key</var>, <var>value</var>]</code> <span class='quiet pad1x strong small'>less than: <var>feature[key]</var> < <var>value</var></span>
-            </div>
-            <div class='space-bottom1'>
-              <code>["&lt;=", <var>key</var>, <var>value</var>]</code> <span class='quiet pad1x strong small'>less than or equal: <var>feature[key]</var> ≤ <var>value</var></span>
+              <code>["!has", <var>key</var>]</code> <span class='quiet pad1x strong small'><var>feature[key]</var> 不存在</span>
             </div>
 
-            <h4>Set Membership Filters</h4>
+            <h4>比较过滤条件</h4>
 
             <div class='space-bottom1'>
-              <code>["in", <var>key</var>, <var>v0</var>, ..., <var>vn</var>]</code> <span class='quiet pad1x strong small'>set inclusion: <var>feature[key]</var> ∈ {<var>v0</var>, ..., <var>vn</var>}</span>
+              <code>["==", <var>key</var>, <var>value</var>]</code> <span class='quiet pad1x strong small'>等于：<var>feature[key]</var> = <var>value</var></span>
             </div>
             <div class='space-bottom1'>
-              <code>["!in", <var>key</var>, <var>v0</var>, ..., <var>vn</var>]</code> <span class='quiet pad1x strong small'>set exclusion: <var>feature[key]</var> ∉ {<var>v0</var>, ..., <var>vn</var>}</span>
+              <code>["!=", <var>key</var>, <var>value</var>]</code> <span class='quiet pad1x strong small'>不等于：<var>feature[key]</var> ≠ <var>value</var></span>
+            </div>
+            <div class='space-bottom1'>
+              <code>["&gt;", <var>key</var>, <var>value</var>]</code> <span class='quiet pad1x strong small'>大于：<var>feature[key]</var> > <var>value</var></span>
+            </div>
+            <div class='space-bottom1'>
+              <code>["&gt;=", <var>key</var>, <var>value</var>]</code> <span class='quiet pad1x strong small'>大于等于：<var>feature[key]</var> ≥ <var>value</var></span>
+            </div>
+            <div class='space-bottom1'>
+              <code>["&lt;", <var>key</var>, <var>value</var>]</code> <span class='quiet pad1x strong small'>小于：<var>feature[key]</var> < <var>value</var></span>
+            </div>
+            <div class='space-bottom1'>
+              <code>["&lt;=", <var>key</var>, <var>value</var>]</code> <span class='quiet pad1x strong small'>小于等于：<var>feature[key]</var> ≤ <var>value</var></span>
             </div>
 
-            <h4>Combining Filters</h4>
+            <h4>集合隶属过滤条件</h4>
 
             <div class='space-bottom1'>
-              <code>["all", <var>f0</var>, ..., <var>fn</var>]</code> <span class='quiet pad1x strong small'>logical <code>AND</code>: <var>f0</var> ∧ ... ∧ <var>fn</var></span>
+              <code>["in", <var>key</var>, <var>v0</var>, ..., <var>vn</var>]</code> <span class='quiet pad1x strong small'>包含：<var>feature[key]</var> ∈ {<var>v0</var>, ..., <var>vn</var>}</span>
             </div>
             <div class='space-bottom1'>
-              <code>["any", <var>f0</var>, ..., <var>fn</var>]</code> <span class='quiet pad1x strong small'>logical <code>OR</code>: <var>f0</var> ∨ ... ∨ <var>fn</var></span>
+              <code>["!in", <var>key</var>, <var>v0</var>, ..., <var>vn</var>]</code> <span class='quiet pad1x strong small'>不包含：<var>feature[key]</var> ∉ {<var>v0</var>, ..., <var>vn</var>}</span>
+            </div>
+
+            <h4>复合过滤条件</h4>
+
+            <div class='space-bottom1'>
+              <code>["all", <var>f0</var>, ..., <var>fn</var>]</code> <span class='quiet pad1x strong small'>逻辑<code>与</code>: <var>f0</var> ∧ ... ∧ <var>fn</var></span>
             </div>
             <div class='space-bottom1'>
-              <code>["none", <var>f0</var>, ..., <var>fn</var>]</code> <span class='quiet pad1x strong small'>logical <code>NOR</code>: ¬<var>f0</var> ∧ ... ∧ ¬<var>fn</var></span>
+              <code>["any", <var>f0</var>, ..., <var>fn</var>]</code> <span class='quiet pad1x strong small'>逻辑<code>或</code>: <var>f0</var> ∨ ... ∨ <var>fn</var></span>
+            </div>
+            <div class='space-bottom1'>
+              <code>["none", <var>f0</var>, ..., <var>fn</var>]</code> <span class='quiet pad1x strong small'>逻辑<code>非</code>: ¬<var>f0</var> ∧ ... ∧ ¬<var>fn</var></span>
             </div>
           </div>
 
           <p>
-            A filter's <var>key</var> must be a string that identifies a feature property, or
-            the special key <code>"$type"</code>, which identifies the feature type. A <var>value</var>
-            (and <var>v0</var>, ..., <var>vn</var> for set operators) must be a <a href="#string">string</a>,
-            <a href="#number">number</a>, or <a href="#boolean">boolean</a> to compare the property value
-            against. For the <code>"$type"</code> key it must be one of <code>"Point"</code>,
-            <code>"LineString"</code>, or <code>"Polygon"</code>.
+            过滤器的 <var>key</var> 必须是表示要素字段的字符串，或者是表示要素类型的特殊字符 <code>"$type"</code>。<var>value</var>（和集合 <var>v0</var>, ..., <var>vn</var>）必须是 <a href="#string">string</a>、<a href="#number">number</a>、或 <a href="#boolean">boolean</a>，并且与字段值类型一致。对于 <code>"$type"</code>，其值必须是 <code>"Point"</code>、<code>"LineString"</code>、<code>"Polygon"</code>其中之一。
           </p>
 
           <p>
-            Set membership filters are a compact and efficient way to test whether a
-            field matches any of multiple values.
+            集合隶属过滤条件是一个紧凑和高效的方式，来测试字段值是否在值列表中。
           </p>
 
           <p>
-            The comparison and set membership filters implement strictly-typed comparisons; for example, all of the
-            following evaluate to false: <code>0 < "1"</code>, <code>2 == "2"</code>, <code>"true" in [true, false]</code>.
+            比较和集合隶属过滤条件进行的是严格类型比较。例如，这些比较都会返回 false：<code>0 < "1"</code>、<code>2 == "2"</code>、<code>"true" in [true, false]</code>。
           </p>
 
           <p>
-            The <code>"all"</code>, <code>"any"</code>, and <code>"none"</code> filter operators are
-            used to create compound filters. The values <var>f0</var>, ..., <var>fn</var> must be
-            filter expressions themselves.
+            <code>"all"</code>、<code>"any"</code>、和 <code>"none"</code> 过滤操作符用来生成复合过滤条件。其值必须是 <var>f0</var>, ..., <var>fn</var> 过滤条件本身。
           </p>
 
           <div class='space-bottom1 clearfix'>
@@ -867,9 +857,7 @@ navigation:
           </div>
 
           <p>
-            This filter requires that the <code>class</code> property of
-            each feature is equal to either "street_major", "street_minor",
-            or "street_limited".
+            以下过滤条件要求要素的 <code>class</code> 字段的值是 "street_major"、"street_minor"、或 "street_limited"。
           </p>
 
           <div class='space-bottom1 clearfix'>
@@ -879,14 +867,7 @@ navigation:
           </div>
 
           <p>
-            The combining filter "all" takes the three other filters that
-            follow it and requires all of them to be true for a feature
-            to be included: a feature must have a <code>class</code> equal
-            to "street_limited", its <code>admin_level</code> must be greater
-            than or equal to 3, and its type cannot be Polygon. You could
-            change the combining filter to "any" to allow features matching
-            any of those criteria to be included - features that are Polygons,
-            but have a different <code>class</code> value, and so on.
+            以下复合过滤条件 "all" 包含三条其他过滤条件，并要求选中的要素同时满足这些条件：要素的 <code>class</code> 必须等于 "street_limited"，它的 <code>admin_level</code> 必须大于等于 3，并且几何类型不能是  Polygon。你可以将复合条件改为 "any" ，用来选择满足任意条件的要素——如类型为 Polygon，但 <code>class</code> 字段的值不同。
           </p>
 
           <div class='space-bottom1 clearfix'>
@@ -903,7 +884,7 @@ navigation:
           <table class="micro">
             <thead>
             <tr class='fill-light'>
-              <th>SDK Support</th>
+              <th>SDK 支持</th>
               <td class='center'>Mapbox GL JS</td>
               <td class='center'>iOS SDK</td>
               <td class='center'>Android SDK</td>
@@ -911,7 +892,7 @@ navigation:
             </thead>
             <tbody>
             <tr>
-              <td>basic functionality</td>
+              <td>基础功能</td>
               <td class='center'>&gt;= 0.10.0</td>
               <td class='center'>&gt;= 2.0.0</td>
               <td class='center'>&gt;= 2.0.1</td>
