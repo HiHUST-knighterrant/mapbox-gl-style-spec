@@ -1,6 +1,6 @@
 # Mapbox GL Spec & Lint
 
-[![Circle CI](https://circleci.com/gh/mapbox/mapbox-gl-style-spec.svg?style=svg)](https://circleci.com/gh/mapbox/mapbox-gl-style-spec)
+[![Circle CI](https://circleci.com/gh/mapbox/mapbox-gl-style-spec.svg?style=svg)](https://circleci.com/gh/mapbox/mapbox-gl-style-spec) [![Greenkeeper badge](https://badges.greenkeeper.io/jingsam/mapbox-gl-style-spec.svg)](https://greenkeeper.io/)
 
 GL style spec, validation, and migration scripts for [mapbox-gl-js](https://github.com/mapbox/mapbox-gl-js) and
 [mapbox-gl-native](https://github.com/mapbox/mapbox-gl-native).
